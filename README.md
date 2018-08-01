@@ -2,6 +2,8 @@
 
 This gem provides a easy way for you to access the Filebound API.
 
+[![Build Status](https://travis-ci.org/JDHeiskell/filebound_client.svg?branch=master)](https://travis-ci.org/JDHeiskell/filebound_client)
+
 ## Dependencies
 
 ### Development
