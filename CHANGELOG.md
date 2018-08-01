@@ -3,6 +3,10 @@
 
 Changes to this gem will be noted here.
 
+## [0.1.1] - 2018-08-01
+### Fixed
+- Fixed error in summary in the gemspec file.
+
 ## [0.1.0] - 2018-08-01
 ### Added
 - Assignments, Dividers, DocumentBinaryData, Documents, EFormData, EFormDetail, Files, Projects, Separators, and Version
