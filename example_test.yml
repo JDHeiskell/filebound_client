@@ -1,0 +1,9 @@
+---
+host: fb_host
+api_base_uri: /api
+username: username
+password: password
+use_ntlm: true
+ntlm_user: user
+ntlm_password: password
+ntlm_domain: domain.com
