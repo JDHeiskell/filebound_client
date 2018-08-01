@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Bryan Richardson']
   spec.email         = ['brichardson@heiskell.com']
 
-  spec.summary       = '%q{Provides connection to FileBound API}'
+  spec.summary       = 'Provides connection to FileBound API'
   spec.homepage      = 'https://github.com/JDHeiskell/filebound_client'
   spec.license       = 'MIT'
 
