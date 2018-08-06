@@ -15,8 +15,9 @@ This gem provides a easy way for you to access the Filebound API.
 
 ### Runtime
 * Ruby
-* ruby-ntlm - this gem provides the ability to send NTLM headers in requests for when your Filebound server is running
-              on an IIS web site with Windows Authentication enabled.
+* httpi - this gem provides the ability to send NTLM headers in requests for when your Filebound server is running
+          on an IIS web site with Windows Authentication enabled.
+* rubyntlm - this gem is required by the httpi gem to support NTLM headers
 
 ## Installation
 

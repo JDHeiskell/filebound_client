@@ -1,7 +1,7 @@
 require 'bundler/setup'
 require 'filebound_client'
 require 'yaml'
-require 'ntlm/http'
+require 'httpi'
 require 'base64'
 
 Dir[File.join(__dir__, 'factories', '*.rb')].each { |file| require file }
@@ -19,3 +19,4 @@ RSpec.configure do |config|
 
   Factories.constants.each { |constant| config.include Object.const_get("Factories::#{constant}") }
 end
+HTTPI.log = false

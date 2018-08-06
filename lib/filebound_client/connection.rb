@@ -1,6 +1,6 @@
-require 'ntlm/http'
 require 'filebound_client/config'
 require 'json'
+require 'httpi'
 
 module FileboundClient
   # Encapsulates low level logic to talk to Filebound server
@@ -30,6 +30,7 @@ module FileboundClient
         # rubocop:disable Metrics/LineLength
         c.ntlm_auth = { user: config[:ntlm_user], password: config[:ntlm_password], domain: config[:ntlm_domain] } if config[:use_ntlm]
         # rubocop:enable Metrics/LineLength
+        HTTPI.adapter = :net_http
       end
     end
 
@@ -102,8 +103,8 @@ module FileboundClient
     # @param [Hash] params the params Hash that will be sent in the request (keys: query, headers, body)
     # @return [Net::HTTPResponse] the response from the GET request
     def get(url, params)
-      request = Net::HTTP::Get.new(resource_url(url, query_params(params[:query])))
-      execute_request(request, params)
+      request = HTTPI::Request.new(resource_url(url, query_params(params[:query])))
+      execute_request(:get, request, params)
     end
 
     # Sends a PUT request to the supplied resource using the supplied params hash
@@ -111,9 +112,9 @@ module FileboundClient
     # @param [Hash] params the params Hash that will be sent in the request (keys: query, headers, body)
     # @return [Net::HTTPResponse] the response from the PUT request
     def put(url, params)
-      request = Net::HTTP::Put.new(resource_url(url, query_params(params[:query])))
+      request = HTTPI::Request.new(resource_url(url, query_params(params[:query])))
       request.body = params[:body].to_json
-      execute_request(request, params)
+      execute_request(:put, request, params)
     end
 
     # Sends a POST request to the supplied resource using the supplied params hash
@@ -121,9 +122,9 @@ module FileboundClient
     # @param [Hash] params the params Hash that will be sent in the request (keys: query, headers, body)
     # @return [Net::HTTPResponse] the response from the POST request
     def post(url, params)
-      request = Net::HTTP::Post.new(resource_url(url, query_params(params[:query])))
+      request = HTTPI::Request.new(resource_url(url, query_params(params[:query])))
       request.body = params[:body].to_json
-      execute_request(request, params)
+      execute_request(:post, request, params)
     end
 
     # Sends a DELETE request to the supplied resource using the supplied params hash
@@ -131,8 +132,8 @@ module FileboundClient
     # @param [Hash] params the params Hash that will be sent in the request (keys: query, headers, body)
     # @return [Net::HTTPResponse] the response from the DELETE request
     def delete(url, params)
-      request = Net::HTTP::Delete.new(resource_url(url, query_params(params[:query])))
-      execute_request(request, params)
+      request = HTTPI::Request.new(resource_url(url, query_params(params[:query])))
+      execute_request(:delete, request, params)
     end
 
     # Sends a POST request to the Filebound API's login endpoint to request a new security token
@@ -140,7 +141,7 @@ module FileboundClient
     def login
       response = post('/login', body: { username: configuration.username, password: configuration.password },
                                 headers: { 'Content-Type' => 'application/json' })
-      if response.is_a?(Net::HTTPSuccess)
+      if response.code == 200
         @token = JSON.parse(response.body, symbolize_names: true)
         true
       else
@@ -151,9 +152,9 @@ module FileboundClient
     private
 
     def resource_url(url, query)
-      return "#{api_base_uri}/#{url.reverse.chomp('/').reverse}" unless query
+      return "http://#{host}#{api_base_uri}/#{url.reverse.chomp('/').reverse}" unless query
       query_string = query.map { |k, v| "#{k}=#{v}" }.join('&')
-      "#{api_base_uri}/#{url.reverse.chomp('/').reverse}?#{query_string}"
+      "http://#{host}#{api_base_uri}/#{url.reverse.chomp('/').reverse}?#{query_string}"
     end
 
     def query_params(params)
@@ -167,17 +168,16 @@ module FileboundClient
     def set_headers(request, headers)
       if headers.respond_to?(:to_hash)
         headers.each do |k, v|
-          request[k.to_s] = v.to_s
+          request.headers[k.to_s] = v.to_s
         end
       end
       request
     end
 
-    def execute_request(request, params)
-      http = Net::HTTP.new(configuration.host)
+    def execute_request(method, request, params)
       request = set_headers(request, params[:headers])
-      request.ntlm_auth(ntlm_user, ntlm_domain, ntlm_password) if configuration.ntlm_auth
-      http.request(request)
+      request.auth.ntlm(ntlm_user, ntlm_password, ntlm_domain) if configuration.ntlm_auth
+      HTTPI.request(method, request)
     end
   end
 end

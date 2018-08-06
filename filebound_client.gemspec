@@ -25,5 +25,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake', '~> 12.3.0'
   spec.add_development_dependency 'yard', '~> 0.9.0'
 
-  spec.add_runtime_dependency 'ruby-ntlm', '~> 0.0.4'
+  spec.add_runtime_dependency 'httpi', '~> 2.4.0'
+  spec.add_runtime_dependency 'rubyntlm', '~> 0.6.0'
 end
