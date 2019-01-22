@@ -53,7 +53,7 @@ module FileboundClient
       #   c.user_update(id: 165, displayName: 'Test User', email: 'someone@somewhere.com', name: 'username')
       def user_update(user, groups)
         raise Client::FileboundClientException.new('Id is required', 0) unless user[:dd].greater_than_zero?
-        put('/users', nil, {user: user, groups: groups})
+        put('/users', nil, user: user, groups: groups)
       end
 
       # Adds a user.  The user.id must be nil or 0.
@@ -67,7 +67,7 @@ module FileboundClient
       #   c.user_add(id: nil, displayName: 'Test User', email: 'someone@somewhere.com', name: 'username')
       def user_add(user, groups)
         raise Client::FileboundClientException.new('Id is required', 0) if user[:userId].greater_than_zero?
-        put('/users', nil, user, {user: user, groups: groups})
+        put('/users', nil, user, user: user, groups: groups)
       end
 
       private
