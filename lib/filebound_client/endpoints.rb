@@ -8,6 +8,7 @@ require 'filebound_client/endpoints/document_binary_data'
 require 'filebound_client/endpoints/eform_data'
 require 'filebound_client/endpoints/separators'
 require 'filebound_client/endpoints/query'
+require 'filebound_client/endpoints/users'
 
 module FileboundClient
   # Module for resource endpoints
@@ -47,6 +48,7 @@ module FileboundClient
         include FileboundClient::Endpoints::EFormData
         include FileboundClient::Endpoints::Separators
         include FileboundClient::Endpoints::Query
+        include FileboundClient::Endpoints::Users
       end
     end
     # rubocop:enable Metrics/MethodLength, Metrics/AbcSize
