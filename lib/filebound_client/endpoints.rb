@@ -1,14 +1,4 @@
-require 'filebound_client/endpoints/projects'
-require 'filebound_client/endpoints/files'
-require 'filebound_client/endpoints/documents'
-require 'filebound_client/endpoints/version'
-require 'filebound_client/endpoints/assignments'
-require 'filebound_client/endpoints/dividers'
-require 'filebound_client/endpoints/document_binary_data'
-require 'filebound_client/endpoints/eform_data'
-require 'filebound_client/endpoints/separators'
-require 'filebound_client/endpoints/query'
-require 'filebound_client/endpoints/users'
+Dir[File.join(__dir__, "/endpoints/*.rb")].each { |file| require file }
 
 module FileboundClient
   # Module for resource endpoints
@@ -46,9 +36,11 @@ module FileboundClient
         include FileboundClient::Endpoints::Dividers
         include FileboundClient::Endpoints::DocumentBinaryData
         include FileboundClient::Endpoints::EFormData
+        include FileboundClient::Endpoints::EFormDetail
         include FileboundClient::Endpoints::Separators
         include FileboundClient::Endpoints::Query
         include FileboundClient::Endpoints::Users
+        include FileboundClient::Endpoints::Routes
       end
     end
     # rubocop:enable Metrics/MethodLength, Metrics/AbcSize

@@ -1,7 +1,7 @@
 module FileboundClient
   module Endpoints
     # Module for Assignments resource endpoint
-    module Assignments
+    module Assignments      
       # This will call macros to create resource methods on the fly
       def self.included(klass)
         klass.instance_eval do
