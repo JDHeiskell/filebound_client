@@ -3,6 +3,11 @@
 
 Changes to this gem will be noted here.
 
+## [0.3.0] - 2019-01-22
+
+### Added
+- User resource endpoint.
+
 ## [0.2.0] - 2018-08-07
 ### Changed
 - Replaced ruby-ntlm dependency with httpi.  httpi gem is actively being developed while ruby-ntlm hasn't had a new

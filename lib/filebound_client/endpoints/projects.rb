@@ -92,7 +92,7 @@ module FileboundClient
       #   c = FileboundClient::Client.connect(host: url, username: 'username', password: 'password', use_ntlm: true,
       #                                       ntlm_user: 'ntlm_user', ntlm_password: 'ntlm_password',
       #                                       ntlm_domain: 'ntlm_domain')
-      #   c.project_add(ProjectId: 165, Name: 'Test API Project', ProjectType: 'HR')
+      #   c.project_add(ProjectId: nil, Name: 'Test API Project', ProjectType: 'HR')
       def project_add(project)
         raise Client::FileboundClientException.new('Id is required', 0) if project[:projectId].greater_than_zero?
         put('/projects', nil, project)

@@ -154,6 +154,16 @@ d = c.document(document_id)
 puts d[:name]
 ```
 
+### Send an additional filter in the querystring
+
+The FileBound API also gives you the ability to send an additional filter on certain calls to further filter 
+a GET result by any of the fields in the resource.  See below for an example:
+
+```ruby
+u = c.users(filter: 'name_someusername')
+puts u[:displayName]
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Setup your Filebound connection information
