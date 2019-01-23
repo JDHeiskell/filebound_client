@@ -3,6 +3,11 @@
 
 Changes to this gem will be noted here.
 
+## [0.3.1] - 2019-01-23
+
+### Added
+- Call to get single routed item.
+
 ## [0.3.0] - 2019-01-22
 
 ### Changed
