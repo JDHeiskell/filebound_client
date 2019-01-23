@@ -1,6 +1,5 @@
 module Factories
   module DocumentFactory
-    # rubocop:disable Metrics/MethodLength
     def build_document(client, file_path, file_id)
       d = client.documents(filter: "name_Testdocument.txt,fileId_#{file_id}")
       return d.first unless d.empty?
@@ -16,7 +15,6 @@ module Factories
       document_id = client.document_add(d)
       client.document(document_id)
     end
-    # rubocop:enable Metrics/MethodLength
 
     def destroy_document(client, document_id)
       client.document_delete(document_id)

@@ -5,8 +5,14 @@ Changes to this gem will be noted here.
 
 ## [0.3.0] - 2019-01-22
 
+### Changed
+
+- Upgraded httpi to 2.4.4.
+
 ### Added
 - User resource endpoint.
+- Route resource endpoint.
+- RoutedItem resource endpoint.
 
 ## [0.2.0] - 2018-08-07
 ### Changed
