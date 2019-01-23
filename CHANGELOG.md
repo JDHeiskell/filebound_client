@@ -12,6 +12,7 @@ Changes to this gem will be noted here.
 ### Added
 - User resource endpoint.
 - Route resource endpoint.
+- RoutedItem resource endpoint.
 
 ## [0.2.0] - 2018-08-07
 ### Changed

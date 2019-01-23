@@ -125,7 +125,7 @@ puts f[:notes]
 ```ruby
 data = Base64.encode64(File.read('somefile.pdf'))
 d = c.document_new
-d[:allowSaveBinaryData] = false
+d[:allowSaveBinaryData] = true
 d[:binaryData] = data
 d[:extension] = 'pdf'
 d[:fileId] = 123
@@ -152,6 +152,25 @@ d[:name] = 'different name'
 document_id = c.document_update(d)
 d = c.document(document_id)
 puts d[:name]
+```
+
+### Create document and assign it to a workflow and user
+
+Here is a more detail example of a more complex API interaction.
+This example shows how you can create a file, a document in the file and then
+assign that document to a workflow and then a user. Obviously this a quick example
+and still requires null checks and exception handling.
+
+```ruby
+user = c.users(filter: ’name_someuser’).first
+project = c.projects(filter: ’name_someproject’).first
+route = c.project_routes(project[:id], filter: 'name_someroute', hiddenRoutes: true).first
+file = [Create File](#create-a-file)
+document = [Create Document](#create-document-with-attached-binary-file-data)
+routed_item = c.route_document_to_workflow(route[:id], document[:id], ’test note’)
+routed_item[:userId] = user[:id]
+routed_item[:userName] = user[:name]
+routed_item_id = c.routed_item_update(routed_item)
 ```
 
 ### Send an additional filter in the querystring
