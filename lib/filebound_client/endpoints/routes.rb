@@ -1,13 +1,14 @@
 module FileboundClient
   module Endpoints
+    # Module for Routes resource endpoint
     module Routes
-      def self.included klass
+      def self.included(klass)
         klass.instance_eval do
           allow_new :route
           allow_all :routes
         end
       end
-      
+
       # Retrieves xml for a route
       # @param [int] route_id the route key
       # @param [Hash] query_params additional query params to send in the request
@@ -37,8 +38,10 @@ module FileboundClient
       # @param [long] route_step_id optional RouteStep key
       # @param [long] route_step_task_id options RouteStepTask key
       # @return [nil]
-      def route_document_to_step(routed_item_id, step_number, comment:, due_date:, user_id:, checklist_data:, route_step_id:, route_step_task_id:)
-        params = {id: routed_item_id, stepNumber: step_number }
+      # rubocop:disable Metrics/CyclomaticComplexity, Metrics/ParameterLists
+      def route_document_to_step(routed_item_id, step_number, comment:, due_date:, user_id:, checklist_data:,
+                                 route_step_id:, route_step_task_id:)
+        params = { id: routed_item_id, stepNumber: step_number }
         params[:comment] = comment if comment
         params[:dueDate] = due_date if due_date
         params[:userId] = user_id if user_id
@@ -47,6 +50,7 @@ module FileboundClient
         params[:routeStepTaskId] = route_step_task_id if route_step_task_id
         put('/routes', params, nil)
       end
+      # rubocop:enable Metrics/CyclomaticComplexity, Metrics/ParameterLists
 
       # Routes a document to a user
       # @param [long] document_id document key to route

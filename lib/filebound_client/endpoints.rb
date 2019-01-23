@@ -1,4 +1,4 @@
-Dir[File.join(__dir__, "/endpoints/*.rb")].each { |file| require file }
+Dir[File.join(__dir__, '/endpoints/*.rb')].each { |file| require file }
 
 module FileboundClient
   # Module for resource endpoints

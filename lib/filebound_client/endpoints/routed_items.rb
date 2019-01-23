@@ -1,13 +1,14 @@
 module FileboundClient
   module Endpoints
+    # Module for RoutedItems resource endpoint
     module RoutedItems
-      def self.included klass
+      def self.included(klass)
         klass.instance_eval do
           allow_new :routeditem
           allow_all :routeditems
         end
       end
-      
+
       # Edits a routed item.  The routed_item.id must be not nil and > 0.
       # @param [Hash] routed_item the routed item to edit
       # @return [nil]
@@ -37,7 +38,8 @@ module FileboundClient
       #                                       ntlm_user: 'ntlm_user', ntlm_password: 'ntlm_password',
       #                                       ntlm_domain: 'ntlm_domain')
       #   c.routed_item_complete_step(routed_item)
-      def routed_item_complete_step(routed_item_id, step_number:, step_caption:, comment:, due_date:, user_id:, 
+      # rubocop:disable Metrics/CyclomaticComplexity, Metrics/ParameterLists, Metrics/PerceivedComplexity
+      def routed_item_complete_step(routed_item_id, step_number:, step_caption:, comment:, due_date:, user_id:,
                                     checklist_data:, route_step_id:, route_step_task_id:)
         raise Client::FileboundClientException.new('Id is required', 0) unless routed_item_id.greater_than_zero?
         params = {}
@@ -51,6 +53,7 @@ module FileboundClient
         params[:routeStepTaskId] = route_step_task_id if route_step_task_id
         put("/routeditems/#{routed_item_id}/complete", params, nil)
       end
+      # rubocop:enable Metrics/CyclomaticComplexity, Metrics/ParameterLists, Metrics/PerceivedComplexity
     end
   end
 end
