@@ -9,6 +9,14 @@ module FileboundClient
         end
       end
 
+      # Retrieves a single routed item by its key
+      # @param [int] routed_item_id the routed item key
+      # @param [Hash] query_params additional query params to send in the request
+      # @return [Project] routed_item object
+      def routed_item(routed_item_id, query_params = nil)
+        get("/routeditems/#{routed_item_id}", query_params)
+      end
+
       # Edits a routed item.  The routed_item.id must be not nil and > 0.
       # @param [Hash] routed_item the routed item to edit
       # @return [nil]
