@@ -161,13 +161,15 @@ This example shows how you can create a file, a document in the file and then
 assign that document to a workflow and then a user. Obviously this a quick example
 and still requires null checks and exception handling.
 
+First create your [file](#create-a-file).
+Then create your [document](#create-document-with-attached-binary-file-data).
+Then build out the routed item and update it:
+
 ```ruby
-user = c.users(filter: ’name_someuser’).first
-project = c.projects(filter: ’name_someproject’).first
+user = c.users(filter: 'name_someuser').first
+project = c.projects(filter: 'name_someproject').first
 route = c.project_routes(project[:id], filter: 'name_someroute', hiddenRoutes: true).first
-file = [Create File](#create-a-file)
-document = [Create Document](#create-document-with-attached-binary-file-data)
-routed_item = c.route_document_to_workflow(route[:id], document[:id], ’test note’)
+routed_item = c.route_document_to_workflow(route[:id], d[:id], 'test note')
 routed_item[:userId] = user[:id]
 routed_item[:userName] = user[:name]
 routed_item_id = c.routed_item_update(routed_item)
