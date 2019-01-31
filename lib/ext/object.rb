@@ -14,6 +14,6 @@ class Object
   # @return [true, false]
   def greater_than_zero?
     return false if nil?
-    to_i > 0
+    to_i.positive?
   end
 end

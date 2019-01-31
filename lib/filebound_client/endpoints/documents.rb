@@ -87,7 +87,7 @@ module FileboundClient
       # @param [Hash] document the document hash to add
       # @return [Hash] the newly added document hash
       def document_add(document)
-        raise FileboundClientException.new('File Id is required', 0) unless document && document[:fileId] > 0
+        raise FileboundClientException.new('File Id is required', 0) unless document && document[:fileId].positive?
         put("/documents/#{document[:fileId]}", nil, document)
       end
 

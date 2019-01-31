@@ -3,6 +3,11 @@
 
 Changes to this gem will be noted here.
 
+## [0.3.2] - 2019-01-31
+
+### Added
+- Improved error information returned when and API call fails.
+
 ## [0.3.1] - 2019-01-23
 
 ### Added
