@@ -93,16 +93,15 @@ module FileboundClient
 
     def perform(action, url, params)
       response = connection.send(action, url, params)
-      # rubocop:disable Metrics/LineLength
       if response.error?
         message = <<~ERROR
           #{action.upcase} request failed: #{response.code}
           Headers: #{response.headers}
           Body: #{response.body}
         ERROR
-        raise FileboundClientException.new("#{action.upcase} request failed: #{response.code}", response.code)
+        raise FileboundClientException.new(message, response.code)
       end
-      # rubocop:enable Metrics/LineLength
+
       response.body
     end
   end
