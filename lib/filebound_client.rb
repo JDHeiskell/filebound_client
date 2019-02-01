@@ -5,7 +5,6 @@ require 'filebound_client/configuration'
 require 'filebound_client/config'
 require 'filebound_client/connection'
 require 'filebound_client/endpoints'
-require 'logger'
 
 # This is the core module
 module FileboundClient
