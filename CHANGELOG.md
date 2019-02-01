@@ -3,6 +3,12 @@
 
 Changes to this gem will be noted here.
 
+## [0.3.3] - 2019-02-01
+
+### Removed
+
+- Unnecessary logger config.
+
 ## [0.3.2] - 2019-01-31
 
 ### Added
