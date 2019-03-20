@@ -42,7 +42,7 @@ module FileboundClient
     # @param [Hash] query_params the optional query parameters to pass to the GET request
     # @return [Hash] the JSON parsed hash of the response body
     def get(url, query_params = nil)
-      JSON.parse(perform('get', url, query: query_params), symbolize_names: true)
+      JSON.parse(perform('get', url, query: query_params), symbolize_names: true, quirks_mode: true)
     end
 
     # Executes a GET request on the current Filebound client session expecting binary in the body of the response
@@ -60,7 +60,7 @@ module FileboundClient
     # @return [Hash] the JSON parsed hash of the response body
     def put(url, query_params = nil, body = nil)
       params = { headers: { 'Content-Type' => 'application/json' }, query: query_params, body: body }
-      JSON.parse(perform('put', url, params), symbolize_names: true)
+      JSON.parse(perform('put', url, params), symbolize_names: true, quirks_mode: true)
     end
 
     # Executes a POST request on the current Filebound client session expecting JSON in the body of the request/response
@@ -70,7 +70,7 @@ module FileboundClient
     # @return [Hash] the JSON parsed hash of the response body
     def post(url, query_params = nil, body = nil)
       params = { headers: { 'Content-Type' => 'application/json' }, query: query_params, body: body }
-      JSON.parse(perform('post', url, params), symbolize_names: true)
+      JSON.parse(perform('post', url, params), symbolize_names: true, quirks_mode: true)
     end
 
     # Executes a DELETE request on the current Filebound client session
