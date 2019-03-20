@@ -142,7 +142,7 @@ module FileboundClient
       response = post('/login', body: { username: configuration.username, password: configuration.password },
                                 headers: { 'Content-Type' => 'application/json' })
       if response.code == 200
-        @token = JSON.parse(response.body, symbolize_names: true)
+        @token = JSON.parse(response.body, symbolize_names: true, quirks_mode: true)
         true
       else
         false

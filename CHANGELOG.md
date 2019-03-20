@@ -3,6 +3,12 @@
 
 Changes to this gem will be noted here.
 
+## [0.3.3] - 2019-03-20
+
+### Changed
+
+- Enabled quirks mode on the JSON parser in FileboundClient::Connection#login
+
 ## [0.3.3] - 2019-02-01
 
 ### Removed
