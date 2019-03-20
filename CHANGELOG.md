@@ -3,7 +3,13 @@
 
 Changes to this gem will be noted here.
 
-## [0.3.3] - 2019-03-20
+## [0.3.5] - 2019-03-20
+
+### Changed
+
+- Enabled quirks mode on the JSON parser for all responses being parsed.
+
+## [0.3.4] - 2019-03-20
 
 ### Changed
 
