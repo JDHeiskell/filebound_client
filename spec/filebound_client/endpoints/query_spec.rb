@@ -17,7 +17,7 @@ RSpec.describe 'Query Endpoint' do
     end
 
     it 'should retrieve a project with files and documents populated' do
-      response = client.query('name_TestProject', 'notes_testfile', 'name_Testdocument.txt')
+      response = client.query('name_TestProject', 'notes_testfile', 'name_Testdocument')
       expect(response[0][:name]).to eq 'TestProject'
       expect(response[0][:files][:collection][0][:notes]).to eq 'testfile'
       expect(response[0][:files][:collection][0][:documents][:collection][0][:name]).to eq 'Testdocument.txt'
