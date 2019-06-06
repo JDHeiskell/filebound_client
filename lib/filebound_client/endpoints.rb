@@ -42,6 +42,7 @@ module FileboundClient
         include FileboundClient::Endpoints::Users
         include FileboundClient::Endpoints::Routes
         include FileboundClient::Endpoints::RoutedItems
+        include FileboundClient::Endpoints::Groups
       end
     end
     # rubocop:enable Metrics/MethodLength, Metrics/AbcSize

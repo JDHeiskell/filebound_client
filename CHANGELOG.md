@@ -3,6 +3,12 @@
 
 Changes to this gem will be noted here.
 
+## [0.3.6] - 2019-06-06
+
+### Added
+
+- Partially implemented Groups endpoint
+
 ## [0.3.5] - 2019-03-20
 
 ### Changed
