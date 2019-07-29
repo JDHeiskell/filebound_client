@@ -3,6 +3,13 @@
 
 Changes to this gem will be noted here.
 
+## [0.3.7] - 2019-07-29
+
+### Changed
+
+- Updated yard to fix a security vulnerability (https://github.com/lsegal/yard/security/advisories/GHSA-xfhh-rx56-rxcr)
+- Updated bundler to 1.17.3
+
 ## [0.3.6] - 2019-06-06
 
 ### Added
