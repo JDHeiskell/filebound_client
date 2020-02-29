@@ -20,7 +20,7 @@ GEM
     powerpack (0.1.2)
     rack (2.0.7)
     rainbow (3.0.0)
-    rake (12.3.1)
+    rake (13.0.1)
     rspec (3.7.0)
       rspec-core (~> 3.7.0)
       rspec-expectations (~> 3.7.0)
@@ -54,7 +54,7 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 1.17.0)
   filebound_client!
-  rake (~> 12.3.0)
+  rake (~> 13.0.1)
   rspec (~> 3.0)
   rubocop (~> 0.58.2)
   yard (>= 0.9.20)
