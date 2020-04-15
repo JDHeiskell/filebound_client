@@ -3,6 +3,13 @@
 
 Changes to this gem will be noted here.
 
+## [0.3.8] - 2020-04-15
+
+### Changed
+
+- Updated bundler to 2.1.4
+- Updated gem dependencies to latest versions
+
 ## [0.3.7] - 2019-07-29
 
 ### Changed
