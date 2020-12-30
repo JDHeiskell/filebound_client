@@ -94,8 +94,23 @@ module FileboundClient
       # Delete a document
       # @param [int] document_id the document key
       # @return [bool] true if document was deleted successfully
-      def document_delete(document_id)
+      def document_delete(document_id, query_params = nil)
         delete("/documents/#{document_id}")
+      end
+
+      # Returns the document comments for the supplied document key
+      # @param [int] document_id the document key
+      # @param [Hash] query_params the additional query params to send in the request
+      def document_comments(document_id, query_params = nil)
+        get("/documents/#{document_id}/comments", query_params)
+      end
+
+      # Adds a comment to document
+      # @param [int] document_id the document key
+      # @param [Hash] comment_data the comment to add
+      # @return [Hash] the newly added document comment hash
+      def document_add_comment(document_id, comment_data, query_params = nil)
+        put("/documents/#{document_id}/comments", nil, comment_data)
       end
     end
   end

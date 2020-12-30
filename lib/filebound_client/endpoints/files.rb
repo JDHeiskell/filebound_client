@@ -64,6 +64,21 @@ module FileboundClient
       def file_delete(file_id)
         delete("/files/#{file_id}")
       end
+
+      # Returns the file comments for the supplied file key
+      # @param [int] file_id the file key
+      # @param [Hash] query_params the additional query params to send in the request
+      def file_comments(file_id, query_params = nil)
+        get("/files/#{file_id}/comments", query_params)
+      end
+
+      # Adds a comment to file
+      # @param [int] file_id the file key
+      # @param [Hash] comment_data the comment to add
+      # @return [Hash] the newly added file comment hash
+      def file_add_comment(file_id, comment_data, query_params = nil)
+        put("/files/#{file_id}/comments", nil, comment_data)
+      end
     end
   end
 end

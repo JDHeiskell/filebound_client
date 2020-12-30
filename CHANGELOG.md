@@ -3,6 +3,15 @@
 
 Changes to this gem will be noted here.
 
+## [0.4.0] - 2020-12-30
+
+### Added
+
+- Created FileboundClient::Endpoints::Documents#document_comments for retrieve comments for a document
+- Created FileboundClient::Endpoints::Documents#document_add_comment for creating new comments on a document
+- Created FileboundClient::Endpoints::Files#file_comments for retrieve comments for a file
+- Created FileboundClient::Endpoints::Files#file_add_comment for creating new comments on a file
+
 ## [0.3.8] - 2020-04-15
 
 ### Changed
