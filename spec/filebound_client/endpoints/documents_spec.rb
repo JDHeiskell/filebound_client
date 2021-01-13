@@ -31,5 +31,25 @@ RSpec.describe 'Documents Endpoint' do
       updated_document = client.document(document_id)
       expect(updated_document[:notes]).to eq 'test note'
     end
+
+    it 'should add a new document note' do
+      user = client.users(filter: "name_#{config[:username]}").first
+      note_hash = {
+        "customSort": "",
+        "documentCommentId": 0,
+        "documentId": document[:id],
+        "userId": user[:id],
+        "userDisplayName": "",
+        "commentDate": Time.now.strftime('%FT%T'),
+        "commentText": 'test',
+        "id": 0,
+        "syncFlag": 0,
+        "viewerContext": 0,
+        "totalCount": 1,
+        "objectType": 200
+      }      
+      client.document_add_comment(document[:id], note_hash)
+      expect(client.document_comments(document[:id]).count).to eq 1
+    end
   end
 end

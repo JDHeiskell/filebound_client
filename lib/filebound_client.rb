@@ -101,7 +101,11 @@ module FileboundClient
         raise FileboundClientException.new(message, response.code)
       end
 
-      response.body
+      if response.body.nil? || response.body.to_s == ''
+        '{}'
+      else
+        response.body
+      end
     end
   end
 end

@@ -3,6 +3,16 @@
 
 Changes to this gem will be noted here.
 
+## [0.4.1] - 2021-01-13
+
+### Changed
+
+- Allowed for the possibility that the Filebound API may return an empty string in the response body
+
+### Added
+
+- Spec for creating a document note
+
 ## [0.4.0] - 2020-12-30
 
 ### Added
