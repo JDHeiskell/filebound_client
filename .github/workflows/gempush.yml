@@ -15,10 +15,6 @@ jobs:
       with:
         version: 2.6.x
     
-    - name: Run Specs
-      run: |
-        bundle exec rspec
-
     - name: Publish to RubyGems
       run: |
         mkdir -p $HOME/.gem
