@@ -5,7 +5,7 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  publish:
     name: Build + Publish
     runs-on: ubuntu-latest
 
@@ -15,6 +15,10 @@ jobs:
       uses: actions/setup-ruby@v1
       with:
         version: 2.6.x
+    
+    - name: Run Specs
+      run: |
+        bundle exec rspec
 
     - name: Publish to RubyGems
       run: |
