@@ -3,6 +3,13 @@
 
 Changes to this gem will be noted here.
 
+## [0.4.4] - 2023-03-13
+
+### Changed
+
+- Upgraded HTTPI and bundler
+- Upgraded Rack
+
 ## [0.4.1] - 2021-01-13
 
 ### Changed

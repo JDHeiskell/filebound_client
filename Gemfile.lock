@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    filebound_client (0.4.3)
+    filebound_client (0.4.4)
       httpi (~> 3.0.0)
       rubyntlm (~> 0.6.0)
 
