@@ -44,9 +44,7 @@ GEM
     ruby-progressbar (1.13.0)
     rubyntlm (0.6.3)
     unicode-display_width (1.8.0)
-    webrick (1.7.0)
-    yard (0.9.28)
-      webrick (~> 1.7.0)
+    yard (0.9.36)
 
 PLATFORMS
   ruby
